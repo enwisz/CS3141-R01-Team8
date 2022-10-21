@@ -10,24 +10,25 @@ public class Player_Movement : MonoBehaviour
     public KeyCode moveright = KeyCode.D;
     public float speed = 10.0f;
     public float BoundX = 20.0f;
-    private Rigidbody2D rb2d;
+    public float BoundZ = 30.0f;
+    private Rigidbody rbd;
 
     
     void Start()
     {
-        rb2d = GetComponent<Rigidbody2D>();
+        rbd = GetComponent<Rigidbody>();
     }
 
     void Update()
     {
-        var vel = rb2d.velocity;
+        var vel = rbd.velocity;
         if (Input.GetKey(moveup))
         {
-            vel.y = speed;
+            vel.z = speed;
         }
         else if (Input.GetKey(movedown))
         {
-            vel.y = -speed;
+            vel.z = -speed;
         }
         else if (Input.GetKey(moveright))
         {
@@ -37,12 +38,32 @@ public class Player_Movement : MonoBehaviour
         {
             vel.x = -speed;
         }
+        else if (Input.GetKey(moveup) && Input.GetKey(moveright))
+        {
+            vel.x = speed;
+            vel.z = speed;
+        }
+        else if (Input.GetKey(moveup) && Input.GetKey(moveleft))
+        {
+            vel.x = -speed;
+            vel.z = speed;
+        }
+        else if (Input.GetKey(movedown) && Input.GetKey(moveright))
+        {
+            vel.x = speed;
+            vel.z = -speed;
+        }
+        else if (Input.GetKey(movedown) && Input.GetKey(moveleft))
+        {
+            vel.x = -speed;
+            vel.z = -speed;
+        }
         else
         {
-            vel.y = 0;
+            vel.z = 0;
             vel.x = 0;
         }
-        rb2d.velocity = vel;
+        rbd.velocity = vel;
 
         var pos = transform.position;
         if(pos.x > 0)
@@ -52,6 +73,14 @@ public class Player_Movement : MonoBehaviour
         else if(pos.x < -BoundX)
         {
             pos.x = -BoundX;
+        }
+        if(pos.z < 0)
+        {
+            pos.z = 0;
+        }
+        else if(pos.z > BoundZ)
+        {
+            pos.z = BoundZ;
         }
         transform.position = pos;
     }
