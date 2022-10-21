@@ -23,14 +23,14 @@ public class PuckControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rbd = GetComponent<RigidBody>();
+        rbd = GetComponent<Rigidbody>();
         Invoke("GoRandDir", 2);
     }
 
     void ResetPuck()
     {
         rbd.velocity = Vector3.zero;
-        transform.postion = Vector3.zero;
+        transform.position = Vector3.zero;
     }
 
     void RestartGame()
@@ -45,7 +45,7 @@ public class PuckControl : MonoBehaviour
         {
             Vector3 vel;
             vel.x = rbd.velocity.x;
-            vel.z = (rbd.velocity.z / 2) + (coll.collider.attachedRigidbody.velocit.z / 3);
+            vel.z = (rbd.velocity.z / 2) + (coll.collider.attachedRigidbody.velocity.z / 3);
         }
     }
 

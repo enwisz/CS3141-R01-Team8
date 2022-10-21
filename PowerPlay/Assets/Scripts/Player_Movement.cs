@@ -64,7 +64,7 @@ public class Player_Movement : MonoBehaviour
             vel.x = 0;
         }
         rbd.velocity = vel;
-
+/*
         var pos = transform.position;
         if(pos.x > 0)
         {
@@ -82,6 +82,8 @@ public class Player_Movement : MonoBehaviour
         {
             pos.z = BoundZ;
         }
+
         transform.position = pos;
+        */
     }
 }
