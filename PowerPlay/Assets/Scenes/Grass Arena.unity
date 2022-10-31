@@ -11951,8 +11951,6 @@ MonoBehaviour:
   moveleft: 97
   moveright: 100
   speed: 10
-  BoundX: 20
-  BoundZ: 30
 --- !u!64 &800703755
 MeshCollider:
   m_ObjectHideFlags: 0
@@ -12269,8 +12267,6 @@ MonoBehaviour:
   moveleft: 276
   moveright: 275
   speed: 10
-  BoundX: 1000
-  BoundZ: -1000
 --- !u!1001 &838669877
 PrefabInstance:
   m_ObjectHideFlags: 0

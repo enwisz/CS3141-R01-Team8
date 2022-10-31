@@ -8,10 +8,12 @@ public class Player_Movement : MonoBehaviour
     public KeyCode movedown = KeyCode.S;
     public KeyCode moveleft = KeyCode.A;
     public KeyCode moveright = KeyCode.D;
+    
     public float speed = 10.0f;
-    public float BoundX = 20.0f;
-    public float BoundZ = 30.0f;
+    
+    
     private Rigidbody rbd;
+    private Vector3 _startPosition;
 
     
     void Start()
@@ -19,9 +21,15 @@ public class Player_Movement : MonoBehaviour
         rbd = GetComponent<Rigidbody>();
     }
 
+    public void Initialize()
+    {
+        _startPosition = transform.position;
+    }
+
     void Update()
     {
         var vel = rbd.velocity;
+
         if (Input.GetKey(moveup))
         {
             vel.z = speed;
@@ -64,26 +72,5 @@ public class Player_Movement : MonoBehaviour
             vel.x = 0;
         }
         rbd.velocity = vel;
-/*
-        var pos = transform.position;
-        if(pos.x > 0)
-        {
-            pos.x = 0;
-        }
-        else if(pos.x < -BoundX)
-        {
-            pos.x = -BoundX;
-        }
-        if(pos.z < 0)
-        {
-            pos.z = 0;
-        }
-        else if(pos.z > BoundZ)
-        {
-            pos.z = BoundZ;
-        }
-
-        transform.position = pos;
-        */
     }
 }
