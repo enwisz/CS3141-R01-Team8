@@ -25,14 +25,14 @@ public class Player_Movement : MonoBehaviour
         Checks the Player tag and uses the corresponding player movement inputs. 
         */
         if(this.CompareTag("Player1")){
-            Vector3 movement_vector = new Vector3(Input.GetAxis("P1_Horizontal"), 1,  Input.GetAxis("P1_Vertical"));
+            Vector3 movement_vector = new Vector3(Input.GetAxis("P1_Horizontal"), 0,  Input.GetAxis("P1_Vertical"));
             if (movement_vector != Vector3.zero){
             rbd.MovePosition(rbd.position + movement_vector * Time.deltaTime * speed);
             }
         }
 
         if(this.CompareTag("Player2")){
-            Vector3 movement_vector = new Vector3(Input.GetAxis("P2_Horizontal"), 1,  Input.GetAxis("P2_Vertical"));
+            Vector3 movement_vector = new Vector3(Input.GetAxis("P2_Horizontal"), 0,  Input.GetAxis("P2_Vertical"));
             if (movement_vector != Vector3.zero){
             rbd.MovePosition(rbd.position + movement_vector * Time.deltaTime * speed);
             }

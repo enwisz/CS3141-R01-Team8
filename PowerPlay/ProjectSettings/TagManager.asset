@@ -8,6 +8,7 @@ TagManager:
   - Player2
   - Puck
   - Player1Goal
+  - Ground
   layers:
   - Default
   - TransparentFX
