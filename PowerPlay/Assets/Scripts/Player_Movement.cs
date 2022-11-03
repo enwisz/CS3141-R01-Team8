@@ -4,18 +4,11 @@ using UnityEngine;
 
 public class Player_Movement : MonoBehaviour
 {
-    public KeyCode moveup = KeyCode.W;
-    public KeyCode movedown = KeyCode.S;
-    public KeyCode moveleft = KeyCode.A;
-    public KeyCode moveright = KeyCode.D;
-    
     public float speed = 10.0f;
-    
     
     private Rigidbody rbd;
     private Vector3 _startPosition;
-
-    
+  
     void Start()
     {
         rbd = GetComponent<Rigidbody>();
@@ -28,49 +21,21 @@ public class Player_Movement : MonoBehaviour
 
     void Update()
     {
-        var vel = rbd.velocity;
+        /*
+        Checks the Player tag and uses the corresponding player movement inputs. 
+        */
+        if(this.CompareTag("Player1")){
+            Vector3 movement_vector = new Vector3(Input.GetAxis("P1_Horizontal"), 0,  Input.GetAxis("P1_Vertical"));
+            if (movement_vector != Vector3.zero){
+            rbd.MovePosition(rbd.position + movement_vector * Time.deltaTime * speed);
+            }
+        }
 
-        if (Input.GetKey(moveup))
-        {
-            vel.z = speed;
+        if(this.CompareTag("Player2")){
+            Vector3 movement_vector = new Vector3(Input.GetAxis("P2_Horizontal"), 0,  Input.GetAxis("P2_Vertical"));
+            if (movement_vector != Vector3.zero){
+            rbd.MovePosition(rbd.position + movement_vector * Time.deltaTime * speed);
+            }
         }
-        else if (Input.GetKey(movedown))
-        {
-            vel.z = -speed;
-        }
-        else if (Input.GetKey(moveright))
-        {
-            vel.x = speed;
-        }
-        else if (Input.GetKey(moveleft))
-        {
-            vel.x = -speed;
-        }
-        else if (Input.GetKey(moveup) && Input.GetKey(moveright))
-        {
-            vel.x = speed;
-            vel.z = speed;
-        }
-        else if (Input.GetKey(moveup) && Input.GetKey(moveleft))
-        {
-            vel.x = -speed;
-            vel.z = speed;
-        }
-        else if (Input.GetKey(movedown) && Input.GetKey(moveright))
-        {
-            vel.x = speed;
-            vel.z = -speed;
-        }
-        else if (Input.GetKey(movedown) && Input.GetKey(moveleft))
-        {
-            vel.x = -speed;
-            vel.z = -speed;
-        }
-        else
-        {
-            vel.z = 0;
-            vel.x = 0;
-        }
-        rbd.velocity = vel;
     }
 }
