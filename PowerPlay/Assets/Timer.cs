@@ -17,14 +17,23 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(timeValue > 0)
+        if (!ScoreManager.instance.paused) 
         {
-            timeValue -= Time.deltaTime;
+            if(timeValue > 0)
+            {
+                timeValue -= Time.deltaTime;
+            }
+            else
+            {
+                timeValue = 0;
+            }
+
+            if (timeValue == 0) 
+            {
+                ScoreManager.instance.EndGame();
+            }
         }
-        else
-        {
-            timeValue = 0;
-        }
+
         DisplayTime(timeValue);
     }
 

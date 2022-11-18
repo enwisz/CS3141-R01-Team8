@@ -6,7 +6,7 @@ public class Player_Movement : MonoBehaviour
 {
     private Rigidbody rbd;
 
-    public float force = 100f;
+    public float force = 300f;
     public float maxSpeed = 100f;
 
     public KeyCode moveup = KeyCode.W;
@@ -23,21 +23,23 @@ public class Player_Movement : MonoBehaviour
     {
         rbd.velocity = Vector3.ClampMagnitude(rbd.velocity, maxSpeed);
 
-        if (Input.GetKey(moveup))
-        {
-            rbd.AddForce(0, 0, force);
-        }
-        if (Input.GetKey(movedown))
-        {
-            rbd.AddForce(0, 0, -force);
-        }
-        if (Input.GetKey(moveright))
-        {
-            rbd.AddForce(force, 0, 0);
-        }
-        if (Input.GetKey(moveleft))
-        {
-            rbd.AddForce(-force, 0, 0);
+        if (!ScoreManager.instance.paused) {
+            if (Input.GetKey(moveup))
+            {
+                rbd.AddForce(0, 0, force);
+            }
+            if (Input.GetKey(movedown))
+            {
+                rbd.AddForce(0, 0, -force);
+            }
+            if (Input.GetKey(moveright))
+            {
+                rbd.AddForce(force, 0, 0);
+            }
+            if (Input.GetKey(moveleft))
+            {
+                rbd.AddForce(-force, 0, 0);
+            }
         }
     }
 }
