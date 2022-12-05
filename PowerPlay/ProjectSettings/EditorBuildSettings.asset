@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/Main Menu.unity
+    guid: 190c64318cd601742858bdd2e36a2338
+  - enabled: 1
+    path: Assets/Scenes/Grass Arena.unity
+    guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/Ice Arena.unity
+    guid: a30acbce17135164bb8dd5b87fdcce87
   m_configObjects: {}
