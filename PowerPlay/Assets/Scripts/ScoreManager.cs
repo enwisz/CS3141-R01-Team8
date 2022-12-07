@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 public class ScoreManager : MonoBehaviour
 {
     public static ScoreManager instance;
@@ -102,6 +103,21 @@ public class ScoreManager : MonoBehaviour
         bigText.text = endText;
         bigText.enabled = true;
         pausedPanel.enabled = true; 
+
+        StartCoroutine(toMainMenu(3));
+    }
+
+    IEnumerator toMainMenu(float time1)
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started Coroutine at timestamp : " + Time.time);
+
+        //yield on a new YieldInstruction that waits for 5 seconds.
+        yield return new WaitForSeconds(time1);
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished Coroutine at timestamp : " + Time.time);
+        SceneManager.LoadScene(0);
     }
 
 }
