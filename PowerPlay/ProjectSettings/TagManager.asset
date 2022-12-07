@@ -9,6 +9,9 @@ TagManager:
   - Puck
   - Player1Goal
   - Ground
+  - ability_mass
+  - ability_speed
+  - ability_large
   layers:
   - Default
   - TransparentFX

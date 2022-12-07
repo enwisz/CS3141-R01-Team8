@@ -24,6 +24,10 @@ public class ScoreManager : MonoBehaviour
     int redScore = 0;
     int blueScore = 0;
 
+    private Vector3 redPos;
+    private Vector3 bluePos;
+    private Vector3 puckPos;
+
     private void Awake()
     {
         instance = this;
@@ -34,6 +38,11 @@ public class ScoreManager : MonoBehaviour
     {
         redScoreText.text = redScore.ToString();
         blueScoreText.text = blueScore.ToString();
+
+        redPos = redTransform.position;
+        bluePos = blueTransform.position;
+        puckPos = puckTransform.position;
+
         StartGame();
     }
 
@@ -68,9 +77,9 @@ public class ScoreManager : MonoBehaviour
 
     public void ResetPositions()
     {
-        blueTransform.transform.position = new Vector3(13.7f, 1.1f, -3.5f);
-        redTransform.transform.position = new Vector3(-9.7f, 1.1f, -3.5f);
-        puckTransform.transform.position = new Vector3(1.35f, 1.1f, -2.79f);    
+        blueTransform.transform.position = bluePos;
+        redTransform.transform.position = redPos; 
+        puckTransform.transform.position = puckPos;
 
         blueRigid.velocity = Vector3.zero;
         redRigid.velocity = Vector3.zero;
