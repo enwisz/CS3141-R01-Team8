@@ -51,21 +51,24 @@ public class ScoreManager : MonoBehaviour
     public void AddRedPoint()
     {
         redScore += 1;
+        redScoreText.text = redScore.ToString();
         if (redScore > 2) {
             EndGame();
         }
-        redScoreText.text = redScore.ToString();
+        StartCoroutine(playerScored("red"));
         GoalScored();
     }
 
     public void AddBluePoint()
     {
         blueScore += 1;
+        blueScoreText.text = blueScore.ToString();
+        paused = true;
         if (blueScore > 2) {
             EndGame();
             return;
         }
-        blueScoreText.text = blueScore.ToString();
+        StartCoroutine(playerScored("blue"));
         GoalScored();
     }
 
@@ -74,6 +77,34 @@ public class ScoreManager : MonoBehaviour
         paused = true;
         ResetPositions(); 
         StartGame();
+    }
+
+    IEnumerator playerScored(string player)
+    {
+        //Print the time of when the function is first called.
+        Debug.Log("Started playerScored at timestamp : " + Time.time);
+
+        paused = true;
+        string endText = "";
+        if (player == "red") {
+            endText = "Red Player Scores!";    
+        } else if (player == "blue") {
+            endText = "Blue Player Scores!";
+        }
+
+        bigText.text = endText;
+        bigText.enabled = true;
+        pausedPanel.enabled = true; 
+
+        //Waits for 5 seconds
+        yield return new WaitForSeconds(5);
+
+        bigText.enabled = false;
+        pausedPanel.enabled = false;
+
+        //After we have waited 5 seconds print the time again.
+        Debug.Log("Finished playerScored at timestamp : " + Time.time);
+        
     }
 
     public void ResetPositions()
